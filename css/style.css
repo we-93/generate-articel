@@ -44,6 +44,9 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
+  /* Ukuran minimum untuk popup ekstensi browser */
+  min-width: 900px;
+  min-height: 580px;
 }
 
 /* =====================================================
