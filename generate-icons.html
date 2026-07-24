@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head><title>Generate Icons</title></head>
+<body>
+<p>Klik tombol untuk mengunduh semua icon ekstensi.</p>
+<button onclick="generateAll()">Download Semua Icon</button>
+<script>
+function drawIcon(size) {
+  const canvas = document.createElement('canvas');
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext('2d');
+  const r = size * 0.1;
+
+  // Background rounded rect
+  ctx.fillStyle = '#4f46e5';
+  ctx.beginPath();
+  ctx.moveTo(r, 0);
+  ctx.lineTo(size - r, 0);
+  ctx.quadraticCurveTo(size, 0, size, r);
+  ctx.lineTo(size, size - r);
+  ctx.quadraticCurveTo(size, size, size - r, size);
+  ctx.lineTo(r, size);
+  ctx.quadraticCurveTo(0, size, 0, size - r);
+  ctx.lineTo(0, r);
+  ctx.quadraticCurveTo(0, 0, r, 0);
+  ctx.closePath();
+  ctx.fill();
+
+  // Pen icon (white)
+  ctx.strokeStyle = '#ffffff';
+  ctx.fillStyle = '#ffffff';
+  ctx.lineWidth = size * 0.08;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+
+  const p = size * 0.2;
+  // Pen body diagonal line
+  ctx.beginPath();
+  ctx.moveTo(size * 0.62, p);
+  ctx.lineTo(size - p, size * 0.38);
+  ctx.lineTo(size * 0.35, size * 0.65);
+  ctx.lineTo(p, size - p);
+  ctx.closePath();
+  ctx.stroke();
+
+  // Lines (article lines)
+  ctx.lineWidth = size * 0.06;
+  ctx.beginPath();
+  ctx.moveTo(p, size * 0.78);
+  ctx.lineTo(size * 0.28, size * 0.78);
+  ctx.stroke();
+
+  return canvas;
+}
+
+function downloadCanvas(canvas, filename) {
+  const a = document.createElement('a');
+  a.download = filename;
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+}
+
+function generateAll() {
+  [16, 48, 128].forEach(size => {
+    const canvas = drawIcon(size);
+    downloadCanvas(canvas, `icon${size}.png`);
+  });
+  alert('3 file icon diunduh. Pindahkan ke folder icons/ di proyek.');
+}
+</script>
+</body>
+</html>

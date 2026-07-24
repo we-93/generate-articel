@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Generate Artikel",
+  "version": "1.0.0",
+  "description": "Aplikasi pembuat artikel berbantuan AI menggunakan WeizeRouter API.",
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Generate Artikel"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://weizerouter.web.id/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  },
+  "icons": {
+    "16":  "icons/icon16.png",
+    "48":  "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
